@@ -138,60 +138,60 @@
   Если не достаточно то сказать что не достаточно.
 */
 
-const SIZE_SMALL = 0;
-const SIZE_MEDIUM = 1;
-const SIZE_LARGE = 2;
+// const SIZE_SMALL = 0;
+// const SIZE_MEDIUM = 1;
+// const SIZE_LARGE = 2;
 
-const PRICE_SMALL = 50;
-const PRICE_MEDIUM = 100;
-const PRICE_LARGE = 150;
+// const PRICE_SMALL = 50;
+// const PRICE_MEDIUM = 100;
+// const PRICE_LARGE = 150;
 
-const userInput = prompt('0 - small, 1 - medium, 2 - large', 1);
-const coffeeSize = Number(userInput);
+// const userInput = prompt('0 - small, 1 - medium, 2 - large', 1);
+// const coffeeSize = Number(userInput);
 
-const isValidInput = userInput !== null && !Number.isNaN(coffeeSize);
+// const isValidInput = userInput !== null && !Number.isNaN(coffeeSize);
 
-if (isValidInput) {
-  let haveCoffee;
-  let size;
-  let price;
+// if (isValidInput) {
+//   let haveCoffee;
+//   let size;
+//   let price;
 
-  switch (coffeeSize) {
-    case SIZE_SMALL:
-      haveCoffee = true;
-      size = 'small';
-      price = PRICE_SMALL;
-      break;
+//   switch (coffeeSize) {
+//     case SIZE_SMALL:
+//       haveCoffee = true;
+//       size = 'small';
+//       price = PRICE_SMALL;
+//       break;
 
-    case SIZE_MEDIUM:
-      haveCoffee = true;
-      size = 'medium';
-      price = PRICE_MEDIUM;
-      break;
+//     case SIZE_MEDIUM:
+//       haveCoffee = true;
+//       size = 'medium';
+//       price = PRICE_MEDIUM;
+//       break;
 
-    case SIZE_LARGE:
-      haveCoffee = true;
-      size = 'large';
-      price = PRICE_LARGE;
-      break;
+//     case SIZE_LARGE:
+//       haveCoffee = true;
+//       size = 'large';
+//       price = PRICE_LARGE;
+//       break;
 
-    default:
-      haveCoffee = false;
-  }
+//     default:
+//       haveCoffee = false;
+//   }
 
-  if (haveCoffee) {
-    const userCash = Number(prompt(`Заказан ${size}, с тебя ${price}`));
+//   if (haveCoffee) {
+//     const userCash = Number(prompt(`Заказан ${size}, с тебя ${price}`));
 
-    if (userCash >= price) {
-      const change = userCash - price;
+//     if (userCash >= price) {
+//       const change = userCash - price;
 
-      alert(`Вот ваш ${size} кофе! Сдача: ${change}`);
-    } else {
-      alert('А денег то не хватило!');
-    }
-  } else {
-    alert('Такого кофе нет!');
-  }
-} else {
-  alert('Невалидный ввод!!!');
-}
+//       alert(`Вот ваш ${size} кофе! Сдача: ${change}`);
+//     } else {
+//       alert('А денег то не хватило!');
+//     }
+//   } else {
+//     alert('Такого кофе нет!');
+//   }
+// } else {
+//   alert('Невалидный ввод!!!');
+// }

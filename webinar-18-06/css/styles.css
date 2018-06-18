@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.clock .btn {
+  font-family: inherit;
+  cursor: pointer;
+  min-width: 88px;
+  min-height: 36px;
+  text-transform: uppercase;
+}
+
+.clock .clockface {
+  text-align: center;
+  font-size: 64px;
+  margin: 0;
+}

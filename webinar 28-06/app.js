@@ -21,8 +21,8 @@ const fetchImages = (query, count) => {
     .catch(err => console.log(err));
 };
 
-const createGridItems = items =>
-  items.reduce(
+const createGridItems = items => {
+  return items.reduce(
     (markup, item) =>
       markup +
       `<div class="grid-item"><img src=${item.src.large} alt=${
@@ -30,6 +30,7 @@ const createGridItems = items =>
       }></div>`,
     '',
   );
+};
 
 const updateGrid = photos => {
   const markup = createGridItems(photos);
@@ -42,7 +43,9 @@ const handleFormSumit = e => {
 
   toggleSpinner();
 
-  fetchImages(input.value, 9).then(photos => {
+  const query = input.value;
+
+  fetchImages(query, 9).then(photos => {
     updateGrid(photos);
     toggleSpinner();
   });

@@ -2,22 +2,40 @@ const grid = document.querySelector('.grid');
 const form = document.querySelector('.form');
 const input = document.querySelector('.input');
 const spinner = document.querySelector('.spinner-overlay');
+const loadMoreBtn = document.querySelector('.load-more');
+let currentPage = 1;
+let currentQuery = '';
 
-const API_KEY = '563492ad6f91700001000001845b939d393843c869341924558835be';
+const API_KEY = '5837779-ac3ba737206b541ae294f1119';
 
 const toggleSpinner = () => spinner.classList.toggle('visible');
 
-const fetchImages = (query, count) => {
-  const url = `https://api.pexels.com/v1/search?query=${query}&per_page=${count}`;
-  const headers = { Authorization: API_KEY };
+const showLoadMoreBtn = () => {
+  if (!loadMoreBtn.classList.contains('visible')) {
+    loadMoreBtn.classList.add('visible');
+  }
+};
 
-  return fetch(url, { headers })
+const resetCurrentPage = () => {
+  currentPage = 1;
+};
+
+const incrementCurrentPage = () => {
+  currentPage += 1;
+};
+
+const scrollToBottom = () => scrollTo(0, document.body.scrollHeight);
+
+const fetchImages = ({ query, count, page }) => {
+  const url = `https://pixabay.com/api/?image_type=photo&q=${query}&per_page=${count}&page=${page}&key=${API_KEY}`;
+
+  return fetch(url)
     .then(response => {
       if (response.ok) return response.json();
 
       throw new Error('error: ' + response.statusText);
     })
-    .then(data => data.photos)
+    .then(data => data.hits)
     .catch(err => console.log(err));
 };
 
@@ -25,32 +43,59 @@ const createGridItems = items => {
   return items.reduce(
     (markup, item) =>
       markup +
-      `<div class="grid-item"><img src=${item.src.large} alt=${
-        item.photographer
-      }></div>`,
+      `<div class="grid-item">
+        <img src=${item.webformatURL} alt="photo">
+      </div>`,
     '',
   );
 };
 
-const updateGrid = photos => {
-  const markup = createGridItems(photos);
+const updatePhotosGrid = markup => {
+  grid.insertAdjacentHTML('beforeend', markup);
+};
 
-  grid.innerHTML = markup;
+const resetPhotosGrid = () => {
+  grid.innerHTML = '';
+};
+
+const handleFetch = params => {
+  toggleSpinner();
+
+  fetchImages(params).then(photos => {
+    const markup = createGridItems(photos);
+    updatePhotosGrid(markup);
+    toggleSpinner();
+    scrollToBottom();
+  });
 };
 
 const handleFormSumit = e => {
   e.preventDefault();
 
-  toggleSpinner();
+  resetCurrentPage();
+  resetPhotosGrid();
 
-  const query = input.value;
+  currentQuery = input.value;
 
-  fetchImages(query, 9).then(photos => {
-    updateGrid(photos);
-    toggleSpinner();
+  handleFetch({
+    query: currentQuery,
+    count: 9,
+    page: currentPage,
   });
 
   e.target.reset();
+  showLoadMoreBtn();
+};
+
+const hanelLoadMoreClick = () => {
+  incrementCurrentPage();
+
+  handleFetch({
+    query: currentQuery,
+    count: 9,
+    page: currentPage,
+  });
 };
 
 form.addEventListener('submit', handleFormSumit);
+loadMoreBtn.addEventListener('click', hanelLoadMoreClick);

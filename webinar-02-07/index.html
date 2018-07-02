@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Webinar 02-07</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <ul class="cats-list"></ul>
+
+  <div class="grid"></div>
+
+
+  <form class="form">
+    <input type="text">
+    <button type="submit">submit</button>
+  </form>
+
+  <template id="cats-list-tpl">
+    {{#each cats}}
+    <li>
+      <h2>Name: {{name}}</h2>
+      <p>Age: {{age}}</p>
+
+      {{#if joyful}}
+      <p>Mood: 😊</p>
+      {{else}}
+      <p>Mood: 🙁</p>
+      {{/if}}
+
+      <ul>
+        {{#each traits}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </li>
+    {{/each}}
+  </template>
+
+  <template id="cat-card">
+    <div class="cat">
+      <img src="{{img}}" alt="cute cat" width="320">
+      <h2>Name: {{name}}</h2>
+      <p>Age: {{age}}</p>
+    </div>
+  </template>
+
+  <template id="dish-card">
+    <div class="card">
+      <img class="img" src="{{image}}" alt="" width="200">
+      <div class="content">
+        <h2 class="name">{{name}}</h2>
+        <p class="descr">{{descr}}</p>
+        <footer class="footer">
+          <p class="price">Price: {{price}}$</p>
+          {{#if available}}
+          <button class="button">Add to order</button>
+          {{/if}}
+        </footer>
+
+        {{#unless available}}
+        <p class="sold-out">Sold Out!</p>
+        {{/unless}}
+      </div>
+    </div>
+  </template>
+
+
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="index.js "></script>
+</body>
+
+</html>

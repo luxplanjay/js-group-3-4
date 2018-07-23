@@ -1,0 +1,6 @@
+body {
+  background-color: palevioletred;
+  display: flex;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  display: grid;
+}

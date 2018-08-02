@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Notes</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+</head>
+
+<body class="page">
+  <form class="note-editor">
+    <textarea class="input" rows="5"></textarea>
+    <button type="submit" class="button">Добавить</button>
+  </form>
+
+  <div class="notes-grid"></div>
+
+  <div class="backdrop">
+    <div class="modal">
+      <textarea class="input" rows="5"></textarea>
+      <div class="actions">
+        <button type="button" class="button" data-action="edit-success">Сохранить</button>
+        <button type="button" class="button" data-action="edit-cancel">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

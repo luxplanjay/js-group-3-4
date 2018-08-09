@@ -1,0 +1,12 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "json-server --watch db.json --delay 500"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.0"
+  }
+}

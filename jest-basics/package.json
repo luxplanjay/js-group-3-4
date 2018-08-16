@@ -4,12 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest --watch ./src"
+    "test": "jest --watchAll --verbose",
+    "coverage": "jest --verbose --coverage"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.5.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }
